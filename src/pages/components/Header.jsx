@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../cart/CartContext";
 import "../../index.css";
-import styles from "./Navbar.module.css";
+import styles from "./Header.module.css";
 
 
 const navLinkStyle = ({isActive}) => ({
@@ -12,7 +12,7 @@ const navLinkStyle = ({isActive}) => ({
     padding: '5px 10px'
 });
 
-function Navbar() {
+function Header() {
     const [isDark, setIsDark] = useState(false);
     useEffect(() => {
         if (isDark) {
@@ -50,9 +50,8 @@ function Navbar() {
                     )}
                 </NavLink>
             </div>
-
         </nav>
     );
 }
 
-export default Navbar;
+export default Header;
