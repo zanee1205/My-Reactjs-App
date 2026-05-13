@@ -1,0 +1,26 @@
+.news-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.news-title {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.news-subtitle {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.news-nav {
+  margin-bottom: 20px;
+}
+
+.news-content {
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--code-bg);
+  box-shadow: var(--shadow);
+}
