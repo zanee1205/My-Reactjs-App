@@ -1,0 +1,21 @@
+.cartLink {
+  position: relative;
+  font-weight: 500;
+}
+
+.cartBadge {
+  background-color: red;
+  color: white;
+
+  font-size: 12px;
+  padding: 1px 10px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: -5px;
+  right: -20px;
+}
+
+.quantityControl {
+  color: rgb(0, 0, 0);
+}

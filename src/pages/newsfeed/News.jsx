@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import "../../News.css";
+import styles from "./News.module.css";
 
 const navLinkStyleForNew = ({ isActive }) => ({
   color: isActive ? '#fff' : '#333',
@@ -13,11 +13,11 @@ const navLinkStyleForNew = ({ isActive }) => ({
 
 function News() {
   return (
-    <div className="news-container">
-      <h1 className="news-title">📰 Newsfeed</h1>
-      <p className="news-subtitle">Latest updates and articles</p>
+    <div className= {styles.newsContainer}>
+      <h1 className={styles.newsTitle}> Newsfeed </h1>
+      <p className={styles.newsSubtitle}>Latest updates and articles</p>
 
-      <nav className="news-nav">
+      <nav className={styles.newsNav}>
         <NavLink to="News1" style={navLinkStyleForNew}>
           News 1
         </NavLink>
@@ -26,7 +26,7 @@ function News() {
         </NavLink>
       </nav>
 
-      <div className="news-content">
+      <div className={styles.newsContent}>
         <Outlet />
       </div>
     </div>

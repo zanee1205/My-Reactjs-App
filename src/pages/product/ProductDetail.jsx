@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../cart/CartContext";
+import styles from "./Product.module.css";
 
 function ProductDetail () {
     const { id } = useParams();
@@ -17,7 +18,7 @@ function ProductDetail () {
     if (!product) return <p>Loading...</p>
 
     return (
-        <div>
+        <div >
             <h1>{product.title}</h1>
             <img src = {product.thumbnail} alt = {product.title}/>
             <p>{product.description}</p>

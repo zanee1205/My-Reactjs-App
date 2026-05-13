@@ -1,5 +1,6 @@
 import { useState } from "react";
-import useUsers from "../hooks/useUsers";
+import useUsers from "../../hooks/useUsers";
+import styles from "./Contact.module.css";
 
 function Contact () {
     const [searchId, setSearchId] = useState("");
@@ -13,16 +14,16 @@ function Contact () {
         <div>
             <h1> Welcome to the contact site! </h1>
 
-            <div className = "search-box">
+            <div className = {styles.searchBox}>
                 <input
-                    className = "search-input"  
+                    className = {styles.searchInput}  
                     type = "number"
                     placeholder = "Nhập ID user cần tìm (1-30)"
                     value = {searchId}
                     onChange={(e) => setSearchId(e.target.value)}
                 />
 
-                <button className = "search-button" onClick = {handleSearch} > Tìm kiếm </button>
+                <button className = {styles.searchButton} onClick = {handleSearch} > Tìm kiếm </button>
             </div>
 
             {selectedUser ? (

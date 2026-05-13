@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "./CartContext";
+import styles from "./Cart.module.css";
 
 function Cart () {
     const {cart, removeFromCart, increaseQuantity, decreaseQuantity} = useCart();
@@ -20,10 +21,10 @@ function Cart () {
             ) : (
                 <>
                     {cart.map((item) => (
-                        <div key={item.id} className="cart-item">
+                        <div key={item.id} className={styles.cartItem}>
                             <h3>Tên sản phẩm: {item.title}</h3>
                             
-                            <div className = "quantity-control">
+                            <div className = {styles.quantityControl}>
                                 <button onClick = {() => decreaseQuantity(item.id)}> - </button>
                                 <span> Số lượng: {item.quantity} </span>
                                 <button onClick = {() => increaseQuantity(item.id)}> + </button>

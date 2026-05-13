@@ -1,24 +1,24 @@
-.news-container {
+.newsContainer {
   padding: 20px;
   max-width: 800px;
   margin: auto;
 }
 
-.news-title {
+.newsTitle {
   font-size: 32px;
   margin-bottom: 5px;
 }
 
-.news-subtitle {
+.newsSubtitle {
   color: gray;
   margin-bottom: 20px;
 }
 
-.news-nav {
+.newsNav {
   margin-bottom: 20px;
 }
 
-.news-content {
+.newsContent {
   padding: 20px;
   border-radius: 10px;
   background: var(--code-bg);

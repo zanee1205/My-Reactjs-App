@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../../index.css"
+import styles from "./CookingRecipe.module.css";
 
     
 function CookingRecipe () {
@@ -14,15 +14,15 @@ function CookingRecipe () {
     }, []);
 
     return (
-        <div className = "recipe-container">
+        <div className = {styles.recipeContainer}>
             <h1> Cooking Recipes List </h1>
-            <div className = "recipe-grid">
+            <div className = {styles.recipeGrid}>
                 {recipes.map (recipe => (
-                    <div key = {recipe.id} className = "recipe-card">
-                        <img src = {recipe.image} alt = {recipe.name} />
+                    <div key = {recipe.id} className = {styles.recipeCard}>
+                        <img className ={styles.recipeCardImage} src = {recipe.image} alt = {recipe.name} />
 
                         <h3> {recipe.name} </h3>
-                        <Link to = {`/cookingrecipe/${recipe.id}`} className = "detail-btn">
+                        <Link to = {`/cookingrecipe/${recipe.id}`} className = {styles.detailBtn}>
                             Xem chi tiết
                         </Link>
                     </div>

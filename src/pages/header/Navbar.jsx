@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../cart/CartContext";
 import "../../index.css";
+import styles from "./Navbar.module.css";
 
 
 const navLinkStyle = ({isActive}) => ({
@@ -28,8 +29,8 @@ function Navbar() {
     );
 
     return (
-        <nav className = "navbar">
-            <div className = "nav-left">
+        <nav className = {styles.navbar}>
+            <div className = {styles.navLeft}>
                 <NavLink to="/" style = {navLinkStyle}>Home</NavLink>
                 <NavLink to="/news" style = {navLinkStyle}>News</NavLink>
                 <NavLink to="/contact" style = {navLinkStyle}>Contact</NavLink>
@@ -37,15 +38,15 @@ function Navbar() {
                 <NavLink to="/cookingrecipe" style = {navLinkStyle}>Cooking Recipe</NavLink>
             </div>
 
-            <div className = "nav-right">
-                <button className = "DarkModeButton" onClick={() => setIsDark(!isDark)}>
+            <div className = {styles.navRight}>
+                <button className = {styles.DarkModeButton} onClick={() => setIsDark(!isDark)}>
                     {isDark ? "☀️ Light" : "🌙 Dark"}
                 </button>
 
-                <NavLink to="/cart" style = {navLinkStyle} className = "cart-link">
+                <NavLink to="/cart" style = {navLinkStyle} className = {styles.cartLink}>
                     🛒 Giỏ hàng
                     {totalItems > 0 && (
-                        <span className = "cart-badge"> {totalItems} </span>
+                        <span className = {styles.cartBadge}> {totalItems} </span>
                     )}
                 </NavLink>
             </div>

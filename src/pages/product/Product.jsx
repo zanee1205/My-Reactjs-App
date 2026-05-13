@@ -1,7 +1,7 @@
 import { useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../cart/CartContext";
-import "../../index.css";
+import styles from "./Product.module.css";
 
 
 function Product () {
@@ -19,18 +19,18 @@ function Product () {
 
     return (
         <div>
-            <h1 className = "page-title"> Product Page</h1>
+            <h1 className = {styles.pageTitle}> Product Page</h1>
 
-            <div className = "product-grid">
+            <div className = {styles.productGrid}>
                 {products. map(product => (
-                    <div className = "product-card" key = {product.id}>
+                    <div className = {styles.productCard} key = {product.id}>
                         <img src ={product.thumbnail} alt = {product.title} />
 
                         <h3> {product.title} </h3>
 
                         <NavLink 
                             to = {`/product/${product.id}`}
-                            style={{ display: "block", marginBottom: "10px" }}
+                            style={{ display: "block", marginBottom: "10px", color: "black" }}
                         >
                             Xem chi tiết
                         </NavLink>

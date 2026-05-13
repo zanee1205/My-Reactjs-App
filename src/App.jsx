@@ -3,14 +3,13 @@ import Home from "./pages/Home";
 import News from "./pages/newsfeed/News";
 import News1 from "./pages/newsfeed/News1";
 import News2 from "./pages/newsfeed/News2";
-import Contact from "./pages/Contact";
+import Contact from "./pages/contacts/Contact";
 import Product from "./pages/product/Product";
 import ProductDetail from "./pages/product/ProductDetail";
 import Cart from "./pages/cart/Cart"
 import CookingRecipe from "./pages/cooking/CookingRecipe"
 import CookingRecipeDetail from "./pages/cooking/CookingRecipeDetail";
-import "./App.css";
-import Navbar from "./pages/components/Navbar";
+import Navbar from "./pages/header/Navbar";
 
 function App() {
   return (

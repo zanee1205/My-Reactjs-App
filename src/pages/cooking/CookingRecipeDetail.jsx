@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../../index.css"
+import styles from "./CookingRecipe.module.css"
 
 function CookingRecipeDetail () {
     const { id } = useParams();
@@ -17,12 +17,12 @@ function CookingRecipeDetail () {
 
     return (
         <div>
-            <button onClick = {() => navigate(-1)} className = "detail-btn" style = {{marginBottom: "20px"}} >
+            <button onClick = {() => navigate(-1)} className = {styles.detailBtn} style = {{marginBottom: "20px"}} >
                 Quay lại
             </button>
 
-            <div className = "recipe-card" style ={{maxWidth: "800px", margin: "auto"}}>
-                <img src = {recipe.image} alt = {recipe.name}/>
+            <div className = {styles.recipeCard} style ={{maxWidth: "800px", margin: "auto"}}>
+                <img className ={styles.recipeCardImage} src = {recipe.image} alt = {recipe.name}/>
                 <h2 style={{ color: "black" }} > Dish name: {recipe.name}</h2>
 
                 <div style = {{ textAlign: "left"}}>

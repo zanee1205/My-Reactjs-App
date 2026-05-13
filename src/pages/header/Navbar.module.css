@@ -1,0 +1,55 @@
+.cartBadge {
+  background-color: red;
+  color: white;
+
+  font-size: 12px;
+  padding: 1px 10px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: -5px;
+  right: -20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 30px;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navLeft a {
+  margin-right: 15px;
+  transition: 0.3s;
+  color: var(--text);
+}
+
+.navLeft a:hover {
+  color: var(--accent);
+}
+
+.cartLink {
+  position: relative;
+  font-weight: 500;
+}
+
+.DarkModeButton {
+  width: 65px;
+  height: 30px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+}
