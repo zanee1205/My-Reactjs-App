@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useUsers from "../../hooks/useUsers";
 import styles from "./Contact.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchQuotes, findQuoteById } from "../../redux/quoteSlice";
 
 function Contact () {
     const [searchId, setSearchId] = useState("");
     const {selectedUser, findUser} = useUsers();
+    const dispatch = useDispatch();
+    const {quotes,  filteredQuote, loading } = useSelector (
+        (state) => state.quote
+    );
+
+    useEffect(() =>{
+        dispatch(fetchQuotes());
+    }, [dispatch]);
+
 
     const handleSearch = () => {
-        findUser (Number(searchId));
+        const id = (Number(searchId));
+
+        findUser (id);
+        dispatch (findQuoteById(id));
     }
 
     return (
@@ -40,6 +54,25 @@ function Contact () {
                 <p> Chưa có user nào cần tìm kiếm. </p>
             
             )}
+
+            {filteredQuote && (
+                <div className = {styles.quoteResult} >
+                    <h3> Kết quả tìm kiếm quote theo ID đã nhập: </h3>
+                    <p> ID: {filteredQuote.id}</p>
+                    <p> Quote: {filteredQuote.quote}</p>
+                    <p> Author: {filteredQuote.author}</p>
+                </div>
+            )}
+
+            {/* <div style = {{marginTop: "20px"}}>
+                {quotes.map((q) =>(
+                    <div key = {q.id} style = {{marginBottom: "10px"}}>
+                        <p> <b>{q.id}</b> {q.quote} </p>
+                        <i>- {q.author}</i>
+                    </div>
+                ))}
+            </div> */}
+
         </div>
     );
 }

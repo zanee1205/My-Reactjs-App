@@ -11,12 +11,12 @@ function Footer() {
                 </div>
 
                 <div className = {styles.center}>
-                    <p> Contact </p>
+                    <p> <b>Contact</b> </p>
                     <p> Email: tdkhuee@gmail.com </p>
                 </div>
 
                 <div className = {styles.social}>
-                    <p> Follow us </p>
+                    <p> <b>Follow us</b> </p>
                     <div>
                         <span> Facebook </span>
                         <span> Instagram </span>

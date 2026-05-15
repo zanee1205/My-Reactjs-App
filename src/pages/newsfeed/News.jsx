@@ -18,12 +18,28 @@ function News() {
       <p className={styles.newsSubtitle}>Latest updates and articles</p>
 
       <nav className={styles.newsNav}>
-        <NavLink to="News1" style={navLinkStyleForNew}>
+        <NavLink to="1" style={navLinkStyleForNew}>
           News 1
         </NavLink>
-        <NavLink to="News2" style={navLinkStyleForNew}>
+        <NavLink to="2" style={navLinkStyleForNew}>
           News 2
         </NavLink>
+        <NavLink to="3" style={navLinkStyleForNew}>
+          News 3
+        </NavLink>
+        <NavLink to="4" style={navLinkStyleForNew}>
+          News 4
+        </NavLink>
+        <NavLink to="5" style={navLinkStyleForNew}>
+          News 5
+        </NavLink>
+        <NavLink to="6" style={navLinkStyleForNew}>
+          News 6
+        </NavLink>
+        <NavLink to="7" style={navLinkStyleForNew}>
+          News 7
+        </NavLink>
+          
       </nav>
 
       <div className={styles.newsContent}>

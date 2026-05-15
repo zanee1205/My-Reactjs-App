@@ -29,3 +29,19 @@
   font-size: 16px;
   margin: 10px 0;
 }
+
+.searchArea {
+  margin-bottom: 20px;
+}
+
+.inputBox {
+  padding: 4px 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.searchBtn {
+  padding: 4px 20px;
+  border-radius: 8px;
+  margin-left: 30px;
+}
