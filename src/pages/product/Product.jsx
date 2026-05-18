@@ -46,7 +46,7 @@ function Product () {
 
                         <h3> {product.title} </h3>
 
-                        <NavLink 
+                        <NavLink
                             to = {`/product/${product.id}`}
                             style={{ display: "block", marginBottom: "10px", color: "black" }}
                         >

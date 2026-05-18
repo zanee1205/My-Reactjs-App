@@ -1,0 +1,17 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Áo thun",
+      "price": 120000,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Quần jeans",
+      "price": 350000,
+      "image": "https://via.placeholder.com/150"
+    }
+  ],
+  "users": []
+}

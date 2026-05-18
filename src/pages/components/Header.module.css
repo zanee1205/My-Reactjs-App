@@ -42,8 +42,9 @@
 }
 
 .DarkModeButton {
-  width: 65px;
-  height: 30px;
+  min-width: 80px;
+  height: 34px;
+  padding: 0 10px;
 }
 
 button {
@@ -52,4 +53,19 @@ button {
   background: var(--accent);
   color: white;
   cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  padding: 6px 12px;
+  font-size: 14px;
 }
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.authButton {
+  min-width: 80px;
+  height: 34px;
+  padding: 0 10px;
+  margin-right: 20px;
+}
+

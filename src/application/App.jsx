@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../pages/homepage/Home";
 import News from "../pages/newsfeed/News";
 import NewsDetail from "../pages/newsfeed/NewsDetail";
@@ -10,80 +10,96 @@ import CookingRecipe from "../pages/cooking/CookingRecipe";
 import CookingRecipeDetail from "../pages/cooking/CookingRecipeDetail";
 import Header from "../pages/components/Header";
 import Footer from "../pages/components/Footer";
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
+
 import styles from "./App.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Cars from "../pages/car/Cars"
+import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/autoplay";
 
-import { Autoplay } from "swiper/modules";
-
 function App() {
+  const location = useLocation();
+
+  const isAuthPage =
+    location.pathname === "/login" ||
+    location.pathname === "/register";
+
   return (
-    <div className={styles.appWrapper}>
+    <div
+      className={`${styles.appWrapper} ${
+        isAuthPage ? styles.authLayout : ""
+      }`}
+    >
 
-      <div className={styles.leftBanner}>
-        <Swiper
-          modules={[Autoplay]}
-          autoplay={{ delay: 3000 }}
-          loop={true}
-        >
-          <SwiperSlide>
-            <img src="/banner1.png" className={styles.bannerImg} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/banner2.png" className={styles.bannerImg} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/banner3.png" className={styles.bannerImg} />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+      {!isAuthPage && (
+        <>
+          <div className={styles.leftBanner}>
+            <Swiper modules={[Autoplay]} autoplay={{ delay: 3000 }} loop>
+              <SwiperSlide>
+                <img src="/banner1.png" className={styles.bannerImg} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="/banner2.png" className={styles.bannerImg} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="/banner3.png" className={styles.bannerImg} />
+              </SwiperSlide>
+            </Swiper>
+          </div>
 
-      <div className={styles.rightBanner}>
-        <Swiper
-          modules={[Autoplay]}
-          autoplay={{
-            delay: 3000,
-            reverseDirection: true
-          }}
-          loop={true}
-        >
-          <SwiperSlide>
-            <img src="/banner1.png" className={styles.bannerImg} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/banner2.png" className={styles.bannerImg} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/banner3.png" className={styles.bannerImg} />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      
-      <Header />
+          <div className={styles.rightBanner}>
+            <Swiper
+              modules={[Autoplay]}
+              autoplay={{ delay: 3000, reverseDirection: true }}
+              loop
+            >
+              <SwiperSlide>
+                <img src="/banner1.png" className={styles.bannerImg} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="/banner2.png" className={styles.bannerImg} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="/banner3.png" className={styles.bannerImg} />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </>
+      )}
+
+      {!isAuthPage && <Header />}
 
       <main className={styles.content}>
         <div className={styles.body}>
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/news" element={<News />}>
               <Route path="/news/:id" element={<NewsDetail />} />
-            </Route>  
+            </Route>
+
             <Route path="/contact" element={<Contact />} />
             <Route path="/product" element={<Product />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
+
             <Route path="/cookingrecipe" element={<CookingRecipe />} />
             <Route path="/cookingrecipe/:id" element={<CookingRecipeDetail />} />
-            {/* <Route path="/cars" element={<Cars />} /> */}
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </main>
 
-      <Footer style={{ background: "black", color: "white", padding: "20px" }} />
+      {!isAuthPage && (
+        <Footer style={{ background: "black", color: "white", padding: "20px" }} />
+      )}
     </div>
   );
 }
+
 export default App;
