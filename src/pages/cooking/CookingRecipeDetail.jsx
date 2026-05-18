@@ -29,14 +29,14 @@ function CookingRecipeDetail () {
                     <h3> Ingredient: </h3>
                     <ul>
                         {recipe.ingredients.map((item, index) => (
-                            <li key = "index"> {item} </li>
+                            <li key = {index}> {item} </li>
                         ))}
                     </ul>
 
                     <h3> How to make: </h3>
                     <ol>
                         {recipe.instructions.map((step, index) => (
-                            <li key = "index"> {step} </li>
+                            <li key = {index}> {step} </li>
                         ))}
                     </ol>
                     

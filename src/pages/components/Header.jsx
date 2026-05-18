@@ -36,6 +36,7 @@ function Header() {
                 <NavLink to="/contact" style = {navLinkStyle}>Contact</NavLink>
                 <NavLink to="/product" style = {navLinkStyle}>Product</NavLink>
                 <NavLink to="/cookingrecipe" style = {navLinkStyle}>Cooking Recipe</NavLink>
+                <NavLink to="/car" style = {navLinkStyle}>Cars list</NavLink>
             </div>
 
             <div className = {styles.navRight}>

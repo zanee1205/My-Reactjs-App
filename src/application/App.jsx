@@ -5,13 +5,14 @@ import NewsDetail from "../pages/newsfeed/NewsDetail";
 import Contact from "../pages/contacts/Contact";
 import Product from "../pages/product/Product";
 import ProductDetail from "../pages/product/ProductDetail";
-import Cart from "../pages/cart/Cart"
-import CookingRecipe from "../pages/cooking/CookingRecipe"
+import Cart from "../pages/cart/Cart";
+import CookingRecipe from "../pages/cooking/CookingRecipe";
 import CookingRecipeDetail from "../pages/cooking/CookingRecipeDetail";
 import Header from "../pages/components/Header";
 import Footer from "../pages/components/Footer";
-import styles from "./App.module.css"
+import styles from "./App.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Cars from "../pages/car/Cars"
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -76,6 +77,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/cookingrecipe" element={<CookingRecipe />} />
             <Route path="/cookingrecipe/:id" element={<CookingRecipeDetail />} />
+            {/* <Route path="/cars" element={<Cars />} /> */}
           </Routes>
         </div>
       </main>
