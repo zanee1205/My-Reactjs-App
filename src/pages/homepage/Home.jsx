@@ -4,12 +4,13 @@ import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css/navigation";
 import styles from "./Home.module.css";
+import { fetchWithAuth } from "../../utils/fetchWithAuth";
 
 function Home () {
     const [photos, setPhotos] = useState([]);
 
     useEffect(() => {
-        fetch("https://api.slingacademy.com/v1/sample-data/photos")
+        fetchWithAuth("https://api.slingacademy.com/v1/sample-data/photos")
             .then(res => res.json())
             .then(data => {
                 setPhotos(data.photos);

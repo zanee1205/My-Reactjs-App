@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { fetchWithAuth } from "../../utils/fetchWithAuth";
 
 function NewsDetail () {
 
@@ -7,7 +8,7 @@ function NewsDetail () {
     const [post, setPost] = useState(null);
 
     useEffect (() => {
-        fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts/${id}`)
+        fetchWithAuth(`https://api.slingacademy.com/v1/sample-data/blog-posts/${id}`)
             .then (res => res.json())
             .then (data => {
                 setPost(data.blog);

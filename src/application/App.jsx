@@ -1,3 +1,5 @@
+// npx json-server --watch db.json --port 3000
+
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../pages/homepage/Home";
 import News from "../pages/newsfeed/News";
@@ -12,10 +14,13 @@ import Header from "../pages/components/Header";
 import Footer from "../pages/components/Footer";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import NotFound from "../pages/404/NotFound";
 
 import styles from "./App.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import ProtectedRoute from "../../ProtectedRoute";
+import { Navigate } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -75,23 +80,29 @@ function App() {
       <main className={styles.content}>
         <div className={styles.body}>
           <Routes>
-            <Route path="/" element={<Home />} />
-
-            <Route path="/news" element={<News />}>
-              <Route path="/news/:id" element={<NewsDetail />} />
-            </Route>
-
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
-
-            <Route path="/cookingrecipe" element={<CookingRecipe />} />
-            <Route path="/cookingrecipe/:id" element={<CookingRecipeDetail />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+
+            <Route element={<ProtectedRoute />}>
+
+              <Route path="/" element={<Home />} />
+
+              <Route path="/news" element={<News />} >
+                <Route path=":id" element={<NewsDetail />}/>
+              </Route>
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/cart" element={<Cart />} />
+
+              <Route path="/cookingrecipe" element={<CookingRecipe />} />
+              <Route path="/cookingrecipe/:id" element={<CookingRecipeDetail />} />
+              <Route path="*" element={<NotFound/>} />
+            </Route>
+            <Route path="*" element={<NotFound/>} />
           </Routes>
+
         </div>
       </main>
 

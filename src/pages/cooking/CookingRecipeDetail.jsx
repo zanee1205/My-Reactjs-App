@@ -1,27 +1,52 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import styles from "./CookingRecipe.module.css"
+import { useParams, useNavigate, Navigate } from "react-router-dom";
+import styles from "./CookingRecipe.module.css";
+import { fetchWithAuth } from "../../utils/fetchWithAuth";
 
 function CookingRecipeDetail () {
     const { id } = useParams();
     const navigate = useNavigate();
     const [recipe, setRecipe] = useState(null);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`https://dummyjson.com/recipes/${id}`)
+        setLoading(true);
+        setError(false);
+        setRecipe(null);
+
+        fetchWithAuth(`https://dummyjson.com/recipes/${id}`)
             .then(res => res.json())
-            .then(data => setRecipe(data)); 
+            .then(data => {
+                if (data.message) {
+                    setError(true);
+                } else {
+                    setRecipe(data);
+                }
+            })
+            .catch(err => setError(true))
+            .finally(() => setLoading(false));
     }, [id]);
+
+    if (error) return (
+        <div>
+            <h2> Recipe not found </h2>
+            <p> Vui lòng kiểm tra đường dẫn hoặc thử lại. </p>
+
+            <button
+                onClick = {() => navigate("/cookingrecipe")}
+                style = {{marginTop: "20px", padding: "10px"}}
+            > Quay lại
+            </button>
+        </div>
+    )
 
     if (!recipe) return <p>Loading...</p>;
 
     return (
         <div>
-            <button onClick = {() => navigate(-1)} className = {styles.detailBtn} style = {{marginBottom: "20px"}} >
-                Quay lại
-            </button>
 
-            <div className = {styles.recipeCard} style ={{maxWidth: "800px", margin: "auto"}}>
+            <div className = {styles.recipeCard} style ={{maxWidth: "800px", margin: "auto", marginBottom: "20px", marginTop: "50px"}}>
                 <img className ={styles.recipeCardImage} src = {recipe.image} alt = {recipe.name}/>
                 <h2 style={{ color: "black" }} > Dish name: {recipe.name}</h2>
 
@@ -42,6 +67,10 @@ function CookingRecipeDetail () {
                     
                 </div>
             </div>
+
+            <button onClick = {() => navigate(-1)} className = {styles.detailBtn} style = {{marginBottom: "20px"}} >
+                Quay lại
+            </button>
         </div>
     );
 }

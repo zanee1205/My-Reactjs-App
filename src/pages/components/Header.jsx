@@ -11,15 +11,30 @@ const navLinkStyle = ({ isActive }) => ({
 });
 
 function Header() {
-  const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  }, [isDark]);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        setUser(storedUser);
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        setUser(null);
+        window.location.href = "/login";
+    };
+
+    const [isDark, setIsDark] = useState(() => {
+        return localStorage.getItem("theme") === "dark";
+    });
+
+    useEffect(() => {
+        const root = document.documentElement;
+        root.classList.toggle("dark", isDark);
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    }, [isDark]);
 
     const {cart} = useCart();
     const totalItems = cart.reduce(
@@ -45,17 +60,35 @@ function Header() {
 
             </div>
 
-            <div className = {styles.navRight}>
+            <div className={styles.navRight}>
+                {user ? (
+                    <>
+                        <span className={styles.userName}>
+                            👋 Xin chào, {user.firstName}
+                        </span>
 
-                <NavLink to="/login">
-                    <button className = {styles.authButton}> Đăng nhập/Đăng ký </button>
-                </NavLink>
+                        <button 
+                            className={styles.authButton}
+                            onClick={handleLogout}
+                        >
+                            Đăng xuất
+                        </button>
+                    </>
+                ) : (
+                    <NavLink to="/login">
+                        <button className={styles.authButton}>
+                            Đăng nhập/Đăng ký
+                        </button>
+                    </NavLink>
+                )}
 
-                <button className = {styles.DarkModeButton} onClick={() => setIsDark(!isDark)}>
+                <button 
+                    className={styles.DarkModeButton} 
+                    onClick={() => setIsDark(!isDark)}
+                >
                     {isDark ? "☀️ Light" : "🌙 Dark"}
                 </button>
 
-                
             </div>
         </nav>
     );

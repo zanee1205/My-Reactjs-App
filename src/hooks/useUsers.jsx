@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { fetchWithAuth } from "../utils/fetchWithAuth";  
 
 function useUsers () {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
 
     useEffect (() =>{
-        fetch("https://dummyjson.com/users")
+        fetchWithAuth("https://dummyjson.com/users")
             .then((res) => res.json())
             .then((data) => setUsers(data.users))
             .catch((err) => console.log(err));
